@@ -18,4 +18,6 @@ https://github.com/suhasini-smy/assesment-fast-website.git
 9.Particle canvas movement we have to increase/decrease based on customer requirments
 in old code movement is very slow new one we have reduced screenshot is attched in  screenshorts/new-fast-website-product-box-and particls.png
 
+
+
 you can check website screenshot in the folder
