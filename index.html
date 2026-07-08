@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrailGear Co. — Outdoor Gear for Every Trail</title>
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/fonts.css">
+
+  <!-- "Just in case" legacy support check. -->
+  <script>
+    // BUG: the intended check was `!window.Promise`. The stray `|| true`
+    // (left over from a debugging session, per the commit that added
+    // it) means this is unconditionally true, so the ~165KB legacy
+    // polyfill bundle is downloaded and executed in every browser,
+    // modern or not. document.write() here also blocks the parser.
+    if (!window.Promise || true) {
+      document.write('<script src="js/vendor/legacy-polyfill.js"><\/script>');
+    }
+  </script>
+
+  <!-- BUG: jQuery included TWICE under different filenames (same bytes) -->
+  <script src="js/vendor/jquery-3.6.0.min.js"></script>
+  <script src="js/vendor/jquery-3.6.0.duplicate.min.js"></script>
+
+  <!-- BUG: heavy libraries loaded on every page even though almost
+       nothing on this page actually uses them -->
+  <script src="js/vendor/moment.min.js"></script>
+  <script src="js/vendor/lodash.min.js"></script>
+</head>
+<body>
+
+  <!-- "Font preloading" that actually forces all 6 weights to download,
+       not just the 2 the page ever displays. See css/fonts.css. -->
+  <div class="font-preload" aria-hidden="true">
+    <span>Aa</span><span>Aa</span><span>Aa</span><span>Aa</span>
+  </div>
+
+
+  <canvas id="particle-canvas"></canvas>
+  <div id="perf-hud">Loading perf HUD…</div>
+
+  <header class="site-header">
+    <div class="logo">TrailGear Co.</div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Gear Built for the Long Trail</h1>
+      <p>Tested in the backcountry. Priced for the weekend warrior.</p>
+      <a href="#shop" class="cta">Shop the Collection</a>
+    </div>
+  </section>
+
+  <section id="shop">
+    <h2 class="section-title">Best Sellers</h2>
+    <div class="product-grid" id="product-grid">
+      <!-- 10 product cards, each referencing a full-resolution "thumbnail" -->
+      <div class="product-card" data-product-id="1"><img src="assets/product-1-thumb.png" alt="Trail 40L Backpack" loading="eager"><div class="info"><h3>Trail 40L Backpack</h3><p class="price">$189</p></div></div>
+      <div class="product-card" data-product-id="2"><img src="assets/product-2-thumb.png" alt="AllWeather 2P Tent" loading="eager"><div class="info"><h3>AllWeather 2P Tent</h3><p class="price">$249</p></div></div>
+      <div class="product-card" data-product-id="3"><img src="assets/product-3-thumb.png" alt="Ridge Hiking Boots" loading="eager"><div class="info"><h3>Ridge Hiking Boots</h3><p class="price">$139</p></div></div>
+      <div class="product-card" data-product-id="4"><img src="assets/product-4-thumb.png" alt="Down Sleeping Bag" loading="eager"><div class="info"><h3>Down Sleeping Bag</h3><p class="price">$219</p></div></div>
+      <div class="product-card" data-product-id="5"><img src="assets/product-5-thumb.png" alt="Carbon Trekking Poles" loading="eager"><div class="info"><h3>Carbon Trekking Poles</h3><p class="price">$79</p></div></div>
+      <div class="product-card" data-product-id="6"><img src="assets/product-6-thumb.png" alt="Storm Rain Jacket" loading="eager"><div class="info"><h3>Storm Rain Jacket</h3><p class="price">$159</p></div></div>
+      <div class="product-card" data-product-id="7"><img src="assets/product-7-thumb.png" alt="Compact Water Filter" loading="eager"><div class="info"><h3>Compact Water Filter</h3><p class="price">$49</p></div></div>
+      <div class="product-card" data-product-id="8"><img src="assets/product-8-thumb.png" alt="Camp Stove Kit" loading="eager"><div class="info"><h3>Camp Stove Kit</h3><p class="price">$69</p></div></div>
+      <div class="product-card" data-product-id="9"><img src="assets/product-9-thumb.png" alt="Rechargeable Headlamp" loading="eager"><div class="info"><h3>Rechargeable Headlamp</h3><p class="price">$39</p></div></div>
+      <div class="product-card" data-product-id="10"><img src="assets/product-10-thumb.png" alt="Merino Base Layer" loading="eager"><div class="info"><h3>Merino Base Layer</h3><p class="price">$59</p></div></div>
+    </div>
+  </section>
+
+  <div class="divider-band"></div>
+
+  <section id="reviews" class="reviews-section">
+    <h2 class="section-title">Customer Reviews</h2>
+    <div class="review-list" id="review-list">
+      <!-- populated at runtime with thousands of unpaginated nodes -->
+    </div>
+  </section>
+
+  <section id="about" class="about-page">
+    <div class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h2>Our Story</h2>
+        <p>Founded by weekend backpackers who got tired of gear that quit before they did.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 TrailGear Co. — Demo site for a performance debugging exercise.
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/analytics.js"></script>
+  <script src="js/quickview.js"></script>
+</body>
+</html>

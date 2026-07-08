@@ -1,0 +1,51 @@
+/* ===================================================================
+   TrailGear Co. — fonts.css  (added in the "expert" difficulty pass)
+   =================================================================== */
+
+@font-face {
+  font-family: 'TrailSans';
+  font-weight: 100;
+  src: url('../assets/fonts/trailsans-thin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'TrailSans';
+  font-weight: 300;
+  src: url('../assets/fonts/trailsans-light.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'TrailSans';
+  font-weight: 400;
+  src: url('../assets/fonts/trailsans-regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'TrailSans';
+  font-weight: 500;
+  src: url('../assets/fonts/trailsans-medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'TrailSans';
+  font-weight: 700;
+  src: url('../assets/fonts/trailsans-bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'TrailSans';
+  font-weight: 900;
+  src: url('../assets/fonts/trailsans-black.woff2') format('woff2');
+}
+
+/* Only weight 400 and 700 are ever used anywhere in main.css. The other
+   four (thin/light/medium/black) still get downloaded in full, though,
+   because of the ".font-preload" trick below — a real pattern some
+   teams add believing it "warms up" fonts, which instead forces the
+   browser to fetch every declared weight whether it's shown or not. */
+.font-preload {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+.font-preload span:nth-child(1) { font-family: 'TrailSans'; font-weight: 100; }
+.font-preload span:nth-child(2) { font-family: 'TrailSans'; font-weight: 300; }
+.font-preload span:nth-child(3) { font-family: 'TrailSans'; font-weight: 500; }
+.font-preload span:nth-child(4) { font-family: 'TrailSans'; font-weight: 900; }
