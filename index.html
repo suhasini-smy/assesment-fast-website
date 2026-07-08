@@ -16,7 +16,7 @@
     // polyfill bundle is downloaded and executed in every browser,
     // modern or not. document.write() here also blocks the parser.
 
-    if (!window.Promise) { //remove || true jquery
+    if (!window.Promise) { //remove || true jquery 
 
       document.write('<script src="js/vendor/legacy-polyfill.js"><\/script>');
     }
