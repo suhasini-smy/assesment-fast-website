@@ -119,7 +119,7 @@ function startParticles() {
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fill();
     });
-  }, 16); // ~60 times/sec via setInterval instead of requestAnimationFrame
+  }, 50); // ~60 times/sec via setInterval instead of requestAnimationFrame
 }
 
 // --- Lightweight, honest performance HUD so you can SEE the impact of
