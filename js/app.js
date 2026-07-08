@@ -14,14 +14,22 @@ $(document).ready(function () {
 // nothing ever removes old ones, so retained memory climbs for as long
 // as the tab stays open.
 const mouseTrail = [];
+
+const MAX_TRAIL_SIZE=100;
 window.addEventListener('mousemove', function (e) {
   mouseTrail.push({ x: e.clientX, y: e.clientY, t: performance.now(), el: e.target });
+
+  if(mouseTrail.length > MAX_TRAIL_SIZE){
+    mouseTrail.shift();
+  }
+
 });
 
 // --- BUG: a resize handler that is re-registered on every call to
 // initGallery() instead of once. Every window resize therefore adds
 // ANOTHER listener on top of all previous ones, so work done per-resize
 // grows over the life of the page (also a leak).
+
 function initGallery() {
   window.addEventListener('resize', function () {
     document.querySelectorAll('.product-card').forEach(function (card) {
@@ -41,7 +49,7 @@ function equalizeCardHeights() {
   const cards = document.querySelectorAll('.product-card');
   cards.forEach(function (card) {
     const h = card.offsetHeight;           // READ (forces layout)
-    card.style.minHeight = h + 2 + 'px';   // WRITE
+    card.style.minHeight = h  + 'px';   // WRITE
     const h2 = card.offsetHeight;          // READ again (forces layout again)
     card.querySelector('.info').style.paddingTop = (h2 % 5) + 'px'; // WRITE
   });
@@ -51,11 +59,19 @@ window.addEventListener('scroll', equalizeCardHeights); // no throttling/debounc
 // --- BUG: blocking synchronous XHR on the main thread to fetch "reviews".
 // This freezes rendering/input until the (artificially slow) request
 // completes. Should be an async fetch().
-function loadReviewsSync() {
-  const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'data/reviews.json', false); // false = synchronous
-  xhr.send(null);
-  return JSON.parse(xhr.responseText);
+
+// function loadReviewsSync() {
+//   const xhr = new XMLHttpRequest();
+//   xhr.open('GET', 'data/reviews.json', false); // false = synchronous
+//   xhr.send(null);
+//   return JSON.parse(xhr.responseText);
+// }
+
+
+async function loadReviewsSync() {
+     const response = await fetch('data/reviews.json');
+     
+     return await response.json();
 }
 
 // --- BUG: renders thousands of DOM nodes in one go with no pagination
@@ -70,8 +86,9 @@ function renderReviews() {
     html += '<div class="review-item"><strong>' + reviews[i].name +
       '</strong> <span class="stars">' + '★'.repeat(reviews[i].rating) +
       '</span><p>' + reviews[i].text + '</p></div>';
-    list.innerHTML = html;
+    
   }
+  list.innerHTML = html;
 }
 
 // --- BUG: canvas "particle" background animated with setInterval at an
