@@ -15,7 +15,7 @@ https://github.com/suhasini-smy/assesment-fast-website.git
 6.Onscroll hight  of the  product card increasing which is fixed
 7.Throttle function fixed to prevent negative value
 8.Added performance screenshots of lighthouse  in screenshot folder new-fast-website
-9.Particle canvas size we have to increase/decrease based on customer requirments
-in old code size height is very big new one we have reduced
+9.Particle canvas movement we have to increase/decrease based on customer requirments
+in old code movement is very slow new one we have reduced screenshot is attched in  screenshorts/new-fast-website-product-box-and particls.png
 
- 
+you can check website screenshot in the folder
