@@ -13,3 +13,5 @@ https://suhasini-smy.github.io/assesment-fast-website/
 7.throttle function fixed
 8.added performance screenshots of lighthouse  in screenshot folder new-fast-website
  
+
+ 
