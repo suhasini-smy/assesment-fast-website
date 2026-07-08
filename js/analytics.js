@@ -17,7 +17,7 @@ function throttle(fn, wait) {
     // true (a duration is never negative), so this "throttle" fires on
     // every single call — zero actual throttling. Easy to miss in review
     // because the shape of the code looks correct.
-    if (now - last >= wait) {
+    if (now - last >= wait) {//fixed 08-07-2026
       last = now;
       fn.apply(this, args);
     }

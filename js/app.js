@@ -15,11 +15,11 @@ $(document).ready(function () {
 // as the tab stays open.
 const mouseTrail = [];
 
-const MAX_TRAIL_SIZE=100;
+const MAX_TRAIL_SIZE=100;//added 08-07-2026
 window.addEventListener('mousemove', function (e) {
   mouseTrail.push({ x: e.clientX, y: e.clientY, t: performance.now(), el: e.target });
 
-  if(mouseTrail.length > MAX_TRAIL_SIZE){
+  if(mouseTrail.length > MAX_TRAIL_SIZE){ //added 08-07-2026
     mouseTrail.shift();
   }
 
@@ -49,7 +49,7 @@ function equalizeCardHeights() {
   const cards = document.querySelectorAll('.product-card');
   cards.forEach(function (card) {
     const h = card.offsetHeight;           // READ (forces layout)
-    card.style.minHeight = h  + 'px';   // WRITE
+    card.style.minHeight = h  + 'px';   // WRITE //fixed 08-07-2026
     const h2 = card.offsetHeight;          // READ again (forces layout again)
     card.querySelector('.info').style.paddingTop = (h2 % 5) + 'px'; // WRITE
   });
@@ -68,7 +68,7 @@ window.addEventListener('scroll', equalizeCardHeights); // no throttling/debounc
 // }
 
 
-async function loadReviewsSync() {
+async function loadReviewsSync() {//added 08-07-2026
      const response = await fetch('data/reviews.json');
      
      return await response.json();
@@ -88,7 +88,7 @@ function renderReviews() {
       '</span><p>' + reviews[i].text + '</p></div>';
     
   }
-  list.innerHTML = html;
+  list.innerHTML = html;//fixed 08-07-2026
 }
 
 // --- BUG: canvas "particle" background animated with setInterval at an

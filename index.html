@@ -15,16 +15,21 @@
     // it) means this is unconditionally true, so the ~165KB legacy
     // polyfill bundle is downloaded and executed in every browser,
     // modern or not. document.write() here also blocks the parser.
-    if (!window.Promise) {
+
+    if (!window.Promise) { //remove || true jquery
+
       document.write('<script src="js/vendor/legacy-polyfill.js"><\/script>');
     }
   </script>
 
   <!-- BUG: jQuery included TWICE under different filenames (same bytes) -->
   <script src="js/vendor/jquery-3.6.0.min.js"></script>
+  <!-- removed dublicate jquery 08-07-2026 -->
 
   <!-- BUG: heavy libraries loaded on every page even though almost
        nothing on this page actually uses them -->
+   <!-- removed unused jquery 08-07-2026 -->
+
 </head>
 <body>
 
