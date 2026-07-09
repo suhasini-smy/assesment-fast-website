@@ -92,6 +92,8 @@ async function renderReviews() {
   list.innerHTML = html; //fixed 08-07-2026 removed from inside loop
 }
 
+
+
 // --- BUG: canvas "particle" background animated with setInterval at an
 // unthrottled rate, recreating a brand-new array of particle objects on
 // every single tick instead of updating existing ones, and never using
