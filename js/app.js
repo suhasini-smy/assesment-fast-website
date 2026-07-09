@@ -93,7 +93,6 @@ async function renderReviews() {
 }
 
 
-
 // --- BUG: canvas "particle" background animated with setInterval at an
 // unthrottled rate, recreating a brand-new array of particle objects on
 // every single tick instead of updating existing ones, and never using
