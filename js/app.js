@@ -70,8 +70,6 @@ window.addEventListener('scroll', equalizeCardHeights); // no throttling/debounc
 
 async function loadReviewsSync() {//added 08-07-2026 used await sync code to not block the XHR
      const response = await fetch('data/reviews.json');
-     
-     console.log(response);
      return await response.json();
 }
 
