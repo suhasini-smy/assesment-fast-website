@@ -71,15 +71,20 @@ window.addEventListener('scroll', equalizeCardHeights); // no throttling/debounc
 async function loadReviewsSync() {//added 08-07-2026 used await sync code to not block the XHR
      const response = await fetch('data/reviews.json');
      
-     return await response.json();
+     
+      const data = await response.json();
+      return data;
 }
+
 
 // --- BUG: renders thousands of DOM nodes in one go with no pagination
 // or virtualization, and does it with wasteful innerHTML += in a loop
 // (which re-parses the growing string every iteration).
-function renderReviews() {
-  const reviews = loadReviewsSync();
+async function renderReviews() {
+  const reviews = await  loadReviewsSync();
+
   const list = document.getElementById('review-list');
+   
   let html = '';
   for (let i = 0; i < reviews.length; i++) {
     // innerHTML += re-serializes and re-parses the ENTIRE list every pass
@@ -88,6 +93,8 @@ function renderReviews() {
       '</span><p>' + reviews[i].text + '</p></div>';
     
   }
+        
+
   list.innerHTML = html; //fixed 08-07-2026 removed from inside loop
 }
 
